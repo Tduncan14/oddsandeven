@@ -24876,6 +24876,7 @@ var DEFAULT_SETTINGS = {
   instructionsExpanded: false
 };
 var SET_GAME_STARTED = 'SET_GAME_STARTED';
+var SET_INSTRUCTIONS_EXPANDED = 'SET_INSTRUCTIONS_EXPANDED';
 
 var rootReducer = function rootReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_SETTINGS;
