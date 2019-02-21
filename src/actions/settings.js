@@ -1,7 +1,7 @@
+// Action types imported
+import{SET_GAME_STARTED,SET_INSTRUCTIONS_EXPANDED} from './types'
 
-//action types
- export const  SET_GAME_STARTED ='SET_GAME_STARTED';
- export const  SET_INSTRUCTIONS_EXPANDED ='SET_INSTRUCTIONS_EXPANDED';
+
 
 
 //action creator functions

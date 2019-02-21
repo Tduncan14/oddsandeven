@@ -1,3 +1,12 @@
+import{SET_GAME_STARTED,SET_INSTRUCTIONS_EXPANDED} from '../actions/types'
+
+
+const DEFAULT_SETTINGS ={
+    gameStarted:false,
+    instructionsExpanded:false
+}
+
+
 const rootReducer = (state=DEFAULT_SETTINGS,action)=>{
     console.log('state',state,'action',action);
  
@@ -18,3 +27,5 @@ const rootReducer = (state=DEFAULT_SETTINGS,action)=>{
     }
  
  }
+
+ export default rootReducer;
