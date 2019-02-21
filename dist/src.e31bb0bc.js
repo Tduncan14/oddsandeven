@@ -24879,30 +24879,6 @@ var DEFAULT_SETTINGS = {
   gameStarted: false,
   instructionsExpanded: false
 };
-
-var rootReducer = function rootReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_SETTINGS;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  console.log('state', state, 'action', action);
-
-  switch (action.type) {
-    case SET_GAME_STARTED:
-      return {
-        gameStarted: action.gameStarted,
-        instructionsExpanded: state.instructionsExpanded
-      };
-
-    case SET_INSTRUCTIONS_EXPANDED:
-      return {
-        gameStarted: state.gameStarted,
-        instructionsExpanded: action.instructionsExpanded
-      };
-
-    default:
-      return state;
-  }
-};
-
 var store = (0, _redux.createStore)(rootReducer);
 console.log('store', store);
 console.log('store.getState()', store.getState());
@@ -24913,7 +24889,7 @@ store.dispatch(startGame());
 ;
 store.dispatch(expandedInstructions());
 store.dispatch(cancelGame());
-store.dispatch(cancelInstructions());
+store.dispatch(collapseInstructions());
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","./components/App":"components/App.js","./index.css":"index.css","fs":"../node_modules/parcel-bundler/src/builtins/_empty.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

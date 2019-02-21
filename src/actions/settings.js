@@ -20,7 +20,7 @@
     return{type:SET_INSTRUCTIONS_EXPANDED,instructionsExpanded :true}
 }
 
- export const cancelInstructions = () =>{
+ export const collapseInstructions = () =>{
    return{type:SET_INSTRUCTIONS_EXPANDED, instructionsExpanded:false}
 }
 
