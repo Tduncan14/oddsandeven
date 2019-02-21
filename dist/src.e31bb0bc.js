@@ -24908,9 +24908,7 @@ var rootReducer = function rootReducer() {
 
 var _default = rootReducer;
 exports.default = _default;
-},{"../actions/types":"actions/types.js"}],"../node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
-
-},{}],"index.js":[function(require,module,exports) {
+},{"../actions/types":"actions/types.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -24923,24 +24921,19 @@ var _App = _interopRequireDefault(require("./components/App"));
 
 require("./index.css");
 
-var _index2 = require("./reducers/index");
-
-var _fs = require("fs");
+var _index2 = _interopRequireDefault(require("./reducers/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_index2.rootReducer);
+var store = (0, _redux.createStore)(_index2.default);
 console.log('store', store);
 console.log('store.getState()', store.getState());
 store.subscribe(function () {
   return console.log('store.getState()', store.getState());
-}); //store.dispatch(startGame());;
-//store.dispatch(expandedInstructions());
-//store.dispatch(cancelGame())
-//store.dispatch(collapseInstructions());
+});
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","./components/App":"components/App.js","./index.css":"index.css","./reducers/index":"reducers/index.js","fs":"../node_modules/parcel-bundler/src/builtins/_empty.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","./components/App":"components/App.js","./index.css":"index.css","./reducers/index":"reducers/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -24967,7 +24960,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54548" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63880" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

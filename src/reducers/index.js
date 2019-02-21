@@ -1,4 +1,4 @@
-import{SET_GAME_STARTED,SET_INSTRUCTIONS_EXPANDED} from '../actions/types'
+import{SET_GAME_STARTED,SET_INSTRUCTIONS_EXPANDED} from '../actions/types';
 
 
 const DEFAULT_SETTINGS ={
