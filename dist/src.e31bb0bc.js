@@ -24856,7 +24856,9 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./assets\\roboto-condensed.light.ttf":[["roboto-condensed.light.6709adf4.ttf","assets/roboto-condensed.light.ttf"],"assets/roboto-condensed.light.ttf"],"./assets\\economica-bold.ttf":[["economica-bold.12a9e27d.ttf","assets/economica-bold.ttf"],"assets/economica-bold.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./assets\\roboto-condensed.light.ttf":[["roboto-condensed.light.6709adf4.ttf","assets/roboto-condensed.light.ttf"],"assets/roboto-condensed.light.ttf"],"./assets\\economica-bold.ttf":[["economica-bold.12a9e27d.ttf","assets/economica-bold.ttf"],"assets/economica-bold.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
+
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -24869,28 +24871,36 @@ var _App = _interopRequireDefault(require("./components/App"));
 
 require("./index.css");
 
+var _fs = require("fs");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DEFAULT_SETTINGS = {
   gameStarted: false,
   instructionsExpanded: false
 };
-var SET_GAME_STARTED = 'SET_GAME_STARTED';
-var SET_INSTRUCTIONS_EXPANDED = 'SET_INSTRUCTIONS_EXPANDED';
 
 var rootReducer = function rootReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_SETTINGS;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   console.log('state', state, 'action', action);
 
-  if (action.type === SET_GAME_STARTED) {
-    return {
-      gameStarted: action.gameStarted,
-      instructionsExpanded: false
-    };
-  }
+  switch (action.type) {
+    case SET_GAME_STARTED:
+      return {
+        gameStarted: action.gameStarted,
+        instructionsExpanded: state.instructionsExpanded
+      };
 
-  return state;
+    case SET_INSTRUCTIONS_EXPANDED:
+      return {
+        gameStarted: state.gameStarted,
+        instructionsExpanded: action.instructionsExpanded
+      };
+
+    default:
+      return state;
+  }
 };
 
 var store = (0, _redux.createStore)(rootReducer);
@@ -24899,32 +24909,14 @@ console.log('store.getState()', store.getState());
 store.subscribe(function () {
   return console.log('store.getState()', store.getState());
 });
-
-var startGame = function startGame() {
-  return {
-    type: SET_GAME_STARTED,
-    gameStarted: true
-  };
-};
-
-var cancelGame = function cancelGame() {
-  return {
-    type: SET_GAME_STARTED,
-    gameStarted: false
-  };
-};
-
-var action1 = startGame();
-store.dispatch(action1);
-store.dispatch({
-  type: 'foo'
-});
-store.dispatch({
-  type: 'bar'
-});
+store.dispatch(startGame());
+;
+store.dispatch(expandedInstructions());
+store.dispatch(cancelGame());
+store.dispatch(cancelInstructions());
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","./components/App":"components/App.js","./index.css":"index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","./components/App":"components/App.js","./index.css":"index.css","fs":"../node_modules/parcel-bundler/src/builtins/_empty.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import App from './components/App';
 import './index.css';
+import { stat } from 'fs';
 
 
 const DEFAULT_SETTINGS ={
@@ -10,9 +11,7 @@ const DEFAULT_SETTINGS ={
     instructionsExpanded:false
 }
 
-const SET_GAME_STARTED ='SET_GAME_STARTED';
 
-const SET_INSTRUCTIONS_EXPANDED ='SET_INSTRUCTIONS_EXPANDED';
 
 
 
@@ -20,13 +19,22 @@ const SET_INSTRUCTIONS_EXPANDED ='SET_INSTRUCTIONS_EXPANDED';
 const rootReducer = (state=DEFAULT_SETTINGS,action)=>{
    console.log('state',state,'action',action);
 
-   if(action.type === SET_GAME_STARTED){
+   switch(action.type){
+       case SET_GAME_STARTED:
        return{
            gameStarted:action.gameStarted,
-           instructionsExpanded:false
+           instructionsExpanded:state.instructionsExpanded
+         
        }
+       case SET_INSTRUCTIONS_EXPANDED:
+        return{
+            gameStarted:state.gameStarted,
+            instructionsExpanded:action.instructionsExpanded
+        }
+        default:
+        return state
    }
-    return state;
+
 }
 
 const store = createStore(rootReducer);
@@ -41,24 +49,16 @@ console.log('store.getState()',store.getState());
 
 store.subscribe(() =>console.log('store.getState()',store.getState()));
 
-const startGame = () => {
-    return {type:SET_GAME_STARTED,gameStarted:true};
-}
-
-const cancelGame = () =>{
-    return{type:SET_GAME_STARTED,gameStarted:false};
-}
 
 
+store.dispatch(startGame());;
+store.dispatch(expandedInstructions());
 
-const action1 = startGame();
+store.dispatch(cancelGame())
+store.dispatch(cancelInstructions());
 
 
-store.dispatch(action1);
 
-
-store.dispatch({type:'foo'});
-store.dispatch({type:'bar'});
 
 
 
