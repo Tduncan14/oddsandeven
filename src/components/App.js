@@ -5,13 +5,6 @@ import {startGame,cancelGame} from '../actions/settings';
 
 
 class App extends Component {
-    startGame =() => {
-        this.props.dispatch(startGame())
-    }
-
-    cancelGame =() =>{
-        this.props.dispatch(cancelGame());
-    }
 
     render() {
         console.log('this',this)
@@ -27,13 +20,13 @@ class App extends Component {
                           Game On !
                         </h3>
                       <br />
-                        <button onClick={this.cancelGame} >Cancel Game</button>
+                        <button onClick={this.props.cancelGame} >Cancel Game</button>
                     </div>
                  ):(
                     <div>
                         <h3>A new Game waits</h3>
                         <br />
-                        <button onClick={this.startGame}>Start Game</button>
+                        <button onClick={this.props.startGame}>Start Game</button>
                    </div>
                     )
                   }
@@ -47,6 +40,13 @@ const mapStateToProps = state =>{
     return{gameStarted: state.gameStarted};
 }
 
-const componentConnector = connect (mapStateToProps);
+const mapDispatchToProps = dispatch =>{
+    return{
+        startGame:()=>dispatch(startGame()),
+        cancelGame:()=>dispatch(cancelGame())
+    };
+}
+
+const componentConnector = connect (mapStateToProps,mapDispatchToProps);
 
 export default  componentConnector(App);
