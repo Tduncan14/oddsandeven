@@ -8,7 +8,7 @@ export const cancelGame = () => {
   return { type: SET_GAME_STARTED, gameStarted: false };
 }
 
-export const expandInstructions = () => {
+export const expandedInstructions = () => {
   return { type: SET_INSTRUCTIONS_EXPANDED, instructionsExpanded: true };
 }
 

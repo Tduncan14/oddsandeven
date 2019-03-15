@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import {startGame,cancelGame} from '../actions/settings';
-
+import Instructions from './Instructions'
 
 
 class App extends Component {
@@ -27,6 +27,8 @@ class App extends Component {
                         <h3>A new Game waits</h3>
                         <br />
                         <button onClick={this.props.startGame}>Start Game</button>
+                        <hr />
+                        <Instructions />
                    </div>
                     )
                   }
